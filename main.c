@@ -44,9 +44,9 @@ typedef struct{
 }Snake;
 
 typedef struct {
-    int x;
-    int y;
-}Food;
+    int X;
+    int Y;
+} Food;
 // waxaan ku daray cuntada halkaan
 {
     /* data */
@@ -134,9 +134,7 @@ void moveSnake(Snake *snake,KeyboardDir direction){
 
 
 }
-
-int main(){
-    void generateFood(Food *food, Snake snake) {
+void generateFood(Food *food, Snake snake) {
     do {
         food->X = rand() % COLS + 2;
         food->Y = rand() % ROWS + 2;
@@ -149,14 +147,30 @@ void drawFood(Food food) {
 }
 // si cuntada * loogu abuuro meel random oo gudaha ciyaarta ku jirta
 
-
-
+int main(){
     Snake snake;
     snake.X = 5; 
     snake.Y = 5;
+
+    Food food;
+srand(time(NULL));
+generateFood(&food, snake);
+    
+   // clrscr();
+    hideCursor();
+    drawBoundaries();/// waan bedelay
+
     clrscr();
     hideCursor();
     drawBoundaries();
+    drawFood(food);
+
+    // Maxay qabataa? Waxay cuntada * ku sawiraysaa booska random-ka ah ee generateFood() u doortay.
+
+
+
+
+
     // waxaan ka bedelay 1
     while(1){
         //clrscr();
